@@ -1,0 +1,63 @@
+<html>
+<header>
+    <title>Boom Game</title>
+<!--    0,0     0,1     0,2-->
+<!--    1,0     1,1     1,2-->
+<!--    2,0     2,1     2,2-->
+    <style>
+        .grid {
+            height: 50px;
+            width: 50px;
+            border: 1px black solid;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script>
+        var num_row = 20;
+        var num_col = 20;
+        var board = []
+        var grid_size = 50
+
+        function CreateGrid() {
+            console.log("Creating grid...");
+            /*
+            * row_grids = [(top:0, left:0)       (top:0, left:50)     (top:0, left:100)]
+            * board.push(row_grids)
+            * board = [
+            *   [(top:0, left:0)       (top:0, left:50)     (top:0, left:100)],
+            *   [(top:50, left:0)       (top:50, left:50)     (top:50, left:100)],
+            *   [(top:100, left:0)       (top:100, left:50)     (top:100, left:100)]
+            * ]
+            * row_grids = [(top:50, left:0)       (top:50, left:50)     (top:50, left:100)]
+            * row_grids = [(top:100, left:0)       (top:100, left:50)     (top:100, left:100)]
+            * */
+            for (var row = 0; row < num_row; row++) {
+                var row_grids = [];
+                for (var col = 0; col < num_col; col++) {
+                    var grid = document.createElement("div");
+                    grid.classList.add("grid");
+                    grid.style.position = "absolute";
+                    grid.style.top = (row * grid_size) + "px";
+                    grid.style.left = (col * grid_size) + "px";
+                    grid.innerText = row + "," + col;
+                    row_grids.push(grid);
+                }
+                board.push(row_grids);
+            }
+
+            for (var row = 0; row < num_row; row++) {
+                for (var col = 0; col < num_col; col++) {
+                    document.body.append(board[row][col]);
+                }
+            }
+        }
+
+        CreateGrid();
+    </script>
+</header>
+
+<body>
+</body>
+
+</html>
