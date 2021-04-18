@@ -40,7 +40,30 @@
                     grid.style.position = "absolute";
                     grid.style.top = (row * grid_size) + "px";
                     grid.style.left = (col * grid_size) + "px";
-                    grid.innerText = row + "," + col;
+
+                    if (row % 2 == 0) {
+                        if (col % 2 == 0)  {
+                            grid.style.background = "url(../assets/grass.png)";
+                        } else {
+                            grid.style.background = "url(../assets/floor.png)";
+                        }
+                    } else {
+                        if (col % 2 == 1)  {
+                            grid.style.background = "url(../assets/grass.png)";
+                        } else {
+                            grid.style.background = "url(../assets/floor.png)";
+                        }
+                    }
+
+                    // if ((row * num_row + col) % 2 == 0) {
+                    //     grid.style.background = "url(../assets/grass.png)";
+                    // } else {
+                    //     grid.style.background = "url(../assets/floor.png)";
+                    // }
+
+                    grid.style.backgroundSize = "50px 50px";
+                    // grid.innerText = row + "," + col;
+                    // grid.style.color = "white";
                     row_grids.push(grid);
                 }
                 board.push(row_grids);
