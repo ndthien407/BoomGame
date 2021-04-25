@@ -1,0 +1,78 @@
+<html>
+<header>
+    <title>Boom Game</title>
+<!--    0,0     0,1     0,2-->
+<!--    1,0     1,1     1,2-->
+<!--    2,0     2,1     2,2-->
+    <style>
+        .grid {
+            border: 1px black solid;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script>
+        /*
+        * g: Grass
+        * f: Floor
+        * c: Characer
+        * b: Bomb
+        * */
+        var board = [
+            ["g", "c", "f", "f", "f", "f", "g"],
+            ["f", "f", "f", "f", "f", "f", "f"],
+            ["f", "f", "g", "g", "g", "f", "f"],
+            ["f", "f", "g", "g", "g", "f", "f"],
+            ["f", "f", "g", "g", "g", "f", "f"],
+            ["f", "f", "f", "f", "f", "f", "f"],
+            ["g", "f", "f", "f", "f", "f", "g"],
+        ]
+
+        var grid_size = 50;
+
+        function CreateGrid() {
+            console.log("Creating grid...");
+            /*
+            * row_grids = [(top:0, left:0)       (top:0, left:50)     (top:0, left:100)]
+            * board.push(row_grids)
+            * board = [
+            *   [(top:0, left:0)       (top:0, left:50)     (top:0, left:100)],
+            *   [(top:50, left:0)       (top:50, left:50)     (top:50, left:100)],
+            *   [(top:100, left:0)       (top:100, left:50)     (top:100, left:100)]
+            * ]
+            * row_grids = [(top:50, left:0)       (top:50, left:50)     (top:50, left:100)]
+            * row_grids = [(top:100, left:0)       (top:100, left:50)     (top:100, left:100)]
+            * */
+            for (var row = 0; row < board.length; row++) {
+                for (var col = 0; col < board[0].length; col++) {
+                    var grid = document.createElement("div");
+                    grid.classList.add("grid");
+                    grid.style.position = "absolute";
+                    grid.style.top = (row * grid_size) + "px";
+                    grid.style.left = (col * grid_size) + "px";
+                    grid.style.width = grid_size + "px";
+                    grid.style.height = grid_size + "px";
+
+                    // console.log("row: " + row + " col: " + col + " pos: " + grid.style.top + "," + grid.style.left)
+                    if (board[row][col] == "f") {
+                        grid.style.background = "url(../assets/floor.png)";
+                    } else if (board[row][col] == "g") {
+                        grid.style.background = "url(../assets/grass.png)";
+                    } else if (board[row][col] == "c") {
+                        grid.style.background = "url(../assets/char1.png), url(../assets/floor.png)";
+                    }
+                    grid.style.backgroundSize = grid_size + "px " + grid_size + "px";
+
+                    document.body.append(grid);
+                }
+            }
+        }
+
+        CreateGrid();
+    </script>
+</header>
+
+<body>
+</body>
+
+</html>
