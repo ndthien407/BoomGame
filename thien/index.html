@@ -23,17 +23,7 @@
 
         function CreateGrid() {
             console.log("Creating grid...");
-            /*
-            * row_grids = [(top:0, left:0)       (top:0, left:50)     (top:0, left:100)]
-            * board.push(row_grids)
-            * board = [
-            *   [(top:0, left:0)       (top:0, left:50)     (top:0, left:100)],
-            *   [(top:50, left:0)       (top:50, left:50)     (top:50, left:100)],
-            *   [(top:100, left:0)       (top:100, left:50)     (top:100, left:100)]
-            * ]
-            * row_grids = [(top:50, left:0)       (top:50, left:50)     (top:50, left:100)]
-            * row_grids = [(top:100, left:0)       (top:100, left:50)     (top:100, left:100)]
-            * */
+            
             for (var row = 0; row < num_row; row++) {
                 var row_grids = [];
                 for (var col = 0; col < num_col; col++) {
@@ -43,13 +33,17 @@
                     grid.style.position = "absolute";
                     grid.style.top = (row * grid_size) + "px";
                     grid.style.left = (col * grid_size) + "px";
+
+
                     if(row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1){
-                        grid.style.background ="url(../assets/thien_Map1.1.png)";
+                        grid.style.background ="url(../assets/floor.png)";
                     }else{
-                    grid.style.background = "url(../assets/thien_Map1.png)";
+                    grid.style.background = "url(../assets/grass.png)";
                     }
+                    grid.style.backgroundSize = "50px 50px";
                     row_grids.push(grid);
                 }
+                
                 board.push(row_grids);
             }
 
@@ -67,5 +61,5 @@
 <body>
    
 </body>
-
+ 
 </html>
