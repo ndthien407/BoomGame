@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function print_something(a, b) {
+            console.log(a + b);
+        }
+
+        function callback_example(callback, argument1, argument2) {
+            callback(argument1, argument2);
+        }
+
+        callback_example(function (a, b) {
+            console.log("Value arg1: " + a + " Value arg2: " + b);
+        }, 1, 2);
+
+        setTimeout(function () {
+            console.log("This is setTimeOut")
+        }, 2000);
+        /*
+        setTimeOut(callback, 1000)
+
+        * Dòng 11:
+        callback = function (a, b) {
+            console.log("Value arg1: " + a + " Value arg2: " + b);
+        }
+        argument1 = 1
+        argument2 = 2
+        * Dong 12:
+        * callback(1, 2);
+        * a = 1
+        * b = 2
+        * Dong 16:
+        * console.log("Value arg1: " + 1 + " Value arg2: " + 2)
+        * */
+
+        // var i = 0;
+        // setInterval(function() {
+        //     console.log("Value i: "+i);
+        //     i++;
+        // }, 100); // 1000 micro second = 1 second
+
+        // print_something();
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>
