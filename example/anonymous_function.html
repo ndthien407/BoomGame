@@ -9,18 +9,30 @@
         }
 
         function callback_example(callback, argument1, argument2) {
-            callback(argument1, argument2);
+            var start_time = new Date(); // 3524
+            var end_time = new Date(); // 3624
+            var delta = 1000;
+            for( ; ; ) { // asynchronous vs synchronous
+                callback(argument1, argument2);
+                do {
+                    end_time = new Date(); // 5824
+                } while(end_time - start_time <= delta);
+                start_time = new Date(); // 4724
+            }
         }
 
         callback_example(function (a, b) {
             console.log("Value arg1: " + a + " Value arg2: " + b);
         }, 1, 2);
 
+        /*
         setTimeout(function () {
             console.log("This is setTimeOut")
-        }, 2000);
-        /*
-        setTimeOut(callback, 1000)
+        }, 5000);
+
+        Su dung
+            setTimeOut(callback, 2000)
+            callback_example(callback, argument1, argument2)
 
         * Dòng 11:
         callback = function (a, b) {
